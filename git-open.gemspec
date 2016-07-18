@@ -18,4 +18,8 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = ["git-open"]
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "slop", "~> 4.0"
+  spec.add_dependency "git-remote-parser"
+  spec.add_dependency "launchy"
 end
