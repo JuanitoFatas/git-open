@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+Signal.trap("INT") { abort }
+
+require "rubygems"
+
+lib_dir = File.expand_path(File.join(File.dirname(__FILE__), "..", "lib"))
+$LOAD_PATH << lib_dir unless $LOAD_PATH.include?(lib_dir)
+
+require "git/open"
+
+Git::Open::CLI.execute
