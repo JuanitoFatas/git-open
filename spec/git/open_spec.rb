@@ -28,12 +28,8 @@ RSpec.describe Git::Open::CLI do
   context "something went wrong with the Git::Remote::Parser" do
     it "prints exception" do
       expect(Git::Remote::Parser).to receive_message_chain(:new, :parse, :html_url) { nil }
-      failure_message = <<~FAILURE_MESSAGE
-        Attempted to open `' and failed because Failure in opening uri nil with options {}: undefined method `to_hash' for nil:NilClass
-        Did you mean?  to_h
-      FAILURE_MESSAGE
 
-      expect { Git::Open::CLI.execute }.to output(failure_message).to_stdout
+      expect { Git::Open::CLI.execute }.to output(/Attempted to open/).to_stdout
     end
   end
 end
